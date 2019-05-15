@@ -70,7 +70,7 @@ uint8 EEPROM_readByte(uint16 u16addr, uint8 *u8data) {
 
 	/* Send the device address with Write bit 0b(1010)(A8,A9,A10)(R=1) */
 	TWI_write((uint8) (0xA0 | ((u16addr & 0x700) >> 7) | 1));
-	if (TWI_getStatus() != TW_MT_SLA_W_ACK)
+	if (TWI_getStatus() != TW_MT_SLA_R_ACK)
 		return ERROR;
 
 	/* Read Data From Memory With Nack (Without ACK) */
